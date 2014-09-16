@@ -23,7 +23,7 @@ void countSubstrings (int Ni){
         if (arrT[Ni][i]== 1)
             for (int j=i; j<N[Ni]; j++)
                 if (arrT[Ni][j]== 1)
-                    {temp++;    cout<< "Test Case "<< Ni<< ": Combination "<< temp<< " ("<< i+1<< ", "<< j+1<< ")\n";}
+                    temp++;
     }
     N[Ni]= temp;
 }
