@@ -1,5 +1,6 @@
-/*Problem link "http://www.codechef.com/JULY14/problems/CSUB". Please note that unlike the constraints stated in the link,
-  this code has been written under the following constraints:
+/*  Problem link "http://www.codechef.com/JULY14/problems/CSUB". 
+    
+    Please note that unlike the constraints stated in the link, this code has been written under the following constraints:
     # of test cases T = 10
     # of elements in each test case = 10
     # sum of N over all test cases = 100
