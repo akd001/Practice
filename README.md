@@ -1,8 +1,5 @@
-helloworld
+helloworld!
+
 ==========
 
-GitHub Repo1
-
-My first repository on GitHub!
-
-I love :coffee:.
+A few CodeChef problems solved (some with a bit different constraints).
