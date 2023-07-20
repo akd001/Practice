@@ -68,6 +68,7 @@ func (this *LRUCache) Put(key int, value int)  {
 	// if number of elements is equal to (or more than - which is improbable if this logic is correct)
 	else {
 		// remove tail
+		if this.head 
 	}
 
 }
