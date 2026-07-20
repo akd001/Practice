@@ -1,1 +1,3 @@
 *.class
+*.code-workspace
+**/__pycache__/
