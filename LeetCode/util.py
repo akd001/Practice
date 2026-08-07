@@ -17,3 +17,7 @@ def time_it(func: Callable[..., Any]) -> Callable[..., Any]:
         
         return result
     return wrapper
+
+def sort_array(arr: list[int]) -> list[int]:
+    """Sorts an array in ascending order."""
+    return sorted(arr)
