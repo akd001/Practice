@@ -25,6 +25,17 @@ class Solution:
         return count
 
 
+    @time_it
+    def min_subarray_len(target, nums):
+        left, minLen, curSum = 0, len(nums), 0
+        for right in range(len(nums)):
+            curSum += nums[right]
+            if curSum >= target:
+                minLen = min(minLen, right - left + 1)
+                left += 1
+        return minLen
+
+
 if __name__ == "__main__":
     solution = Solution()
     print(solution.subarraySum(nums, k))

@@ -3,30 +3,49 @@
 from util import time_it
 from typing import List
 
-# s = "abcabcbb"
-s = "pwwkew"
+s = "abcabcbb"
+# s = "pwwkew"
+# s = "ab"
 
 class Solution:
+
     @time_it
-    def lengthOfLongestSubstring(self, s: str) -> int:
-        maxLen, left = 0, 0
-        charMap = {}
-        for i in range(len(s)):
-            print("\n> s[i], charMap - ", s[i], charMap)
-            if charMap.get(s[i]):
-                left = charMap[s[i]] + 1
-                charMap[s[i]] = i
-                print(">>> move left to - ", left)
-            else:
-                charMap[s[i]] = i
-                print(">>> add char - ", s[i])
-            if i - left >= maxLen:
-                maxLen = i - left
-            print("< charMap - ", charMap)
-            print("< left, maxLen -", left, maxLen)
-        return maxLen
+    def lengthOfLongestUniqueSubstring(self, s: str) -> int:
+        char_hash = {}
+        left = 0
+        max_length = 0
+        for right in range(len(s)):
+            # logic: if the character is already in the hash and 
+            # its index is greater than or equal to left, move left 
+            # to the right of that character's last index
+            if s[right] in char_hash and char_hash[s[right]] >= left:
+                left = char_hash[s[right]] + 1
+            char_hash[s[right]] = right
+            max_length = max(max_length, right - left + 1)
+        return max_length
+
+    @time_it
+    def longestSubstringWithKDistinct(self, s: str, k: int) -> int:
+        char_hash = {}
+        left, max_length = 0, 0
+        for right in range(len(s)):
+            # logic: if the character is already in the hash, update 
+            # its index, otherwise add it to the hash. If the hash size exceeds k,
+            # remove the leftmost character from the hash and move left pointer
+            char_hash[s[right]] = right
+            if len(char_hash) > k:
+                least_val = min(char_hash.values())
+                for key in char_hash.keys():
+                    if char_hash[key] == least_val:
+                        del char_hash[key]
+                        left = least_val + 1
+                        break
+            max_length = max(max_length, right - left + 1)
+        return max_length
+
 
 
 if __name__=="__main__":
     sol = Solution()
-    print(sol.lengthOfLongestSubstring(s))
+    print(sol.lengthOfLongestUniqueSubstring(s))
+    print(sol.longestSubstringWithKDistinct(s, 2))
